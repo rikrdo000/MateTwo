@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="launcher_background">#000</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="ColorActivatedHighlight">#FF4081</color>
+    <color name="colorPressedHighlight">#FF4081</color>
+    <color name="colorLongPressedHighlight">#FF4081</color>
+    <color name="colorFocusedHighlight">#FF4081</color>
+    <color name="colorActivatedHighlight">#FF4081</color>
+    <color name="activatedBackgroundIndicator">#FF4081</color>
+
+</resources>

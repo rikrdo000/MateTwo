@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MateTwo;assembly=MateTwo"
+             x:Class="MateTwo.DynamicText">
+
+        <ContentPage.Resources>
+            <ResourceDictionary>
+
+            </ResourceDictionary>
+        </ContentPage.Resources>
+
+        <StackLayout>
+            <!--<Label Text="{x:Static local:DynamicText.OverText}"
+                   VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />-->
+            <Label
+                Text="{x:Static local:DynamicText.Titulo}"
+            ></Label>
+            <Label
+                Text="{x:Static local:DynamicText.Definicion}"
+                ></Label>       
+            <Label
+                Text="{x:Static local:DynamicText.Enunciado}"
+            ></Label>
+            <Image
+                HorizontalOptions="FillAndExpand"
+                BackgroundColor="AntiqueWhite"
+                Source="{x:Static local:DynamicText.Imagen}"
+            >
+            </Image>
+            <Label
+                Text="{x:Static local:DynamicText.Lectura}"
+                IsVisible="False"
+            ></Label>
+            <Image
+                HorizontalOptions="FillAndExpand"
+                Source="{x:Static local:DynamicText.Subelemento}"
+                ></Image>
+            <Button
+                Text="Leer"
+                Clicked="Button_OnClicked"
+            ></Button>
+
+            <TableView
+                VerticalOptions="Center"
+                ></TableView>
+    </StackLayout>
+    
+</ContentPage>
