@@ -26,7 +26,9 @@
                 <RowDefinition Height="*" ></RowDefinition>
             </Grid.RowDefinitions>
 
-            <StackLayout>
+
+
+            <StackLayout Orientation="Horizontal" >
                 <Label
                     HorizontalOptions="Start"
                     Margin="10, 0"
@@ -34,13 +36,20 @@
                     TextColor="DeepSkyBlue"
                     FontAttributes="Bold"
                 ></Label>
+                <ImageButton 
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="End"
+                    WidthRequest="20"
+                    HeightRequest="20"
+                     Source="lupa.jpg"
+                    ></ImageButton>
             </StackLayout>
 
-            <ListView Grid.Row="1"
+            <ListView Grid.Row="1" 
             ItemTapped="ListaDefiniciones_OnItemTapped"
             x:Name="ListaDefiniciones"
-            ItemsSource="{Binding Path=TitulosCollection, Mode=TwoWay}"
-            SelectedItem="{Binding Path=DefinicionSeleccionada, Mode=TwoWay}"
+            ItemsSource="{Binding Path=T2, Mode=TwoWay}"
+            SelectedItem="{Binding Path=DefinicionSeleccionada2, Mode=TwoWay}"
             
         >
             <!--<ListView.Header   >
@@ -50,7 +59,7 @@
                 <ViewCell
                 >
                         <Grid  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                            <Label  FontFamily="" x:Name="ItemLabel" HorizontalTextAlignment="Center"   VerticalTextAlignment="Center" TextColor="Black" Text="{Binding Path=titulo}"></Label>
+                            <Label FontFamily="" x:Name="ItemLabel" HorizontalTextAlignment="Center"   VerticalTextAlignment="Center" TextColor="Black" Text="{Binding Path= titulo}"></Label>
                         </Grid>
                         </ViewCell>
             </DataTemplate>
@@ -62,7 +71,7 @@
             x:Name="IrA"
             IsVisible="False"
             Clicked="IrA_OnClicked"
-            Text="{Binding Path=DefinicionSeleccionada.titulo, StringFormat='Concepto: {0}', Mode=OneWay}"
+            Text="{Binding Path=DefinicionSeleccionada2.titulo, StringFormat='Concepto: {0}', Mode=OneWay}"
             ></Button>
         </Grid>
     </StackLayout>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using MateTwo.Modelo;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -70,13 +70,16 @@ namespace MateTwo
 		{
             //over = "HOLA BEBECITO";
 
-            var o = (Mates)obj;
+            var o = (Definicion)obj;
 
-            Definicion = o.definicion;
+
+            Definicion = o.capitulo.ToString() +"."+ o.definicionId.ToString();
             Enunciado = o.enunciado;
             Lectura = o.lectura;
             Titulo = o.titulo;
-            Imagen = o.imagen;
+
+            if (o.imagenes.Length > 0 )
+                Imagen = o.imagenes[0].source;
             Subelemento = o.subelemento;
             
             InitializeComponent ();
@@ -85,6 +88,18 @@ namespace MateTwo
         private async void  Button_OnClicked(object sender, EventArgs e)
         {
             await MainPage.myMate.Leer(Lectura);
+            //throw new NotImplementedException();
+        }
+
+        private void DynamicText_OnAppearing(object sender, EventArgs e)
+        {
+            //new Animation {
+            //        { 0, 0.25, new Animation (v => this.TranslationY = v, 30, 0) },
+            //        { 0.25, .5, new Animation (v => this.TranslationY = v, 30, 0, easing: Easing.CubicIn) },
+            //        { 0, 0.25, new Animation (h => this.TranslationX = h, -30, 0) },
+            //        { 0.25, .5, new Animation (h => this.TranslationX = h, 30, 0, easing: Easing.CubicIn) }
+            //    }
+            //    .Commit(this, "AppleIconBounceChildAnimations", length: 1000, repeat: () => false);
             //throw new NotImplementedException();
         }
     }

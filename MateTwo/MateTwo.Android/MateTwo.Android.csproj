@@ -157,5 +157,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Definicion1_17.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\lupa.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

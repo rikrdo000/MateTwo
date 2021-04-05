@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using MateTwo.DependencyServices;
+using MateTwo.Helpers;
+using MateTwo.Modelo;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace MateTwo
@@ -18,15 +22,36 @@ namespace MateTwo
 
         ITextToSpeech service;
 
-
+        //public static Helper help = new Helper();
 
         public ObservableCollection<MatesTitutlos> collection = new ObservableCollection<MatesTitutlos>();
 
 
         private ObservableCollection<Mates> titulosCollection;
 
+        private ObservableCollection<Definiciones> titulosDynamicCollection;
 
-        
+        private Definiciones titulosDynamic;
+
+
+        private IEnumerable<Definicion> t2;
+
+        public IEnumerable<Definicion> T2
+        {
+            get { return t2; }
+            set { t2 = value; OnPropertyChanged(); }
+        }
+        public Definiciones TitulosDynamic
+        {
+            get { return titulosDynamic; }
+            set { titulosDynamic = value; OnPropertyChanged(); }
+        }
+
+        public ObservableCollection<Definiciones> TitulosDynamicCollection
+        {
+            get { return titulosDynamicCollection; }
+            set { titulosDynamicCollection = value; OnPropertyChanged(); }
+        }
 
         public ObservableCollection<Mates> TitulosCollection
         {
@@ -42,13 +67,47 @@ namespace MateTwo
             set { definicionSeleccionada = value; OnPropertyChanged(); }
         }
 
+        private Definicion definicionSeleccionada2;
+
+        public Definicion DefinicionSeleccionada2
+        {
+            get { return definicionSeleccionada2; }
+            set { definicionSeleccionada2 = value; OnPropertyChanged(); }
+        }
+
+
+        public async void LoadTitulos()
+        {
+            await GetData($"https://unamcalculoiv20210404224051.azurewebsites.net/api/Definicion");
+        }
+
+        private async Task GetData(string url)
+        {
+            HttpClient http = new HttpClient();
+
+            var response = await http.GetAsync(url);
+            response.EnsureSuccessStatusCode();
+            var jsonResult = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<IEnumerable<Definicion>>(jsonResult);
+
+            T2 = result;
+            //Titulos = titulosDynamic[0];
+        }
+
 
 
         public ModelViewMate()
         {
+            LoadTitulos();
+            //titulosDynamicCollection = help.TitulosDynamic;
+
+            //T2 = Helper.T2;
+            //            TitulosDynamic.
             service = DependencyService.Get<ITextToSpeech>();
 
             DependencyService.Get<ITextToSpeech>();
+
+            return;
 
             TitulosCollection = new ObservableCollection<Mates>();
 
