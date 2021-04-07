@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mateTwo="clr-namespace:MateTwo;assembly=MateTwo"
+             xmlns:local="clr-namespace:MateTwo;assembly=MateTwo"
+             xmlns:vista="clr-namespace:MateTwo.Vista;assembly=MateTwo"
+             x:Class="MateTwo.Vista.VistaProposiciones" Appearing="VistaProposiciones_OnAppearing">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="MiColor">Blue</Color>
+            <mateTwo:ModelViewProposicion x:Key="Modelo"></mateTwo:ModelViewProposicion>
+            <!--<Style TargetType="Button">
+                <Setter Property="FontSize" Value="Italic" />
+            </Style>-->
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout BindingContext="{Binding Source={StaticResource Modelo}}">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" ></RowDefinition>
+                <RowDefinition Height="6*" ></RowDefinition>
+                <RowDefinition Height="*" ></RowDefinition>
+            </Grid.RowDefinitions>
+
+
+
+            <StackLayout Orientation="Horizontal" >
+                <Label
+                    HorizontalOptions="Start"
+                    Margin="10, 0"
+                    Text="Elija un concepto:"
+                    TextColor="DeepSkyBlue"
+                    FontAttributes="Bold"
+                ></Label>
+                <ImageButton 
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="End"
+                    WidthRequest="20"
+                    HeightRequest="20"
+                     Source="lupa.jpg"
+                    ></ImageButton>
+            </StackLayout>
+
+            <ListView Grid.Row="1" 
+            ItemTapped="ListaProposiciones_OnItemTapped"
+            x:Name="ListaProposiciones"
+            ItemsSource="{Binding Path=Prop, Mode=TwoWay}"
+            SelectedItem="{Binding Path=Proposicion, Mode=TwoWay}"
+            
+        >
+                <!--<ListView.Header   >
+            </ListView.Header>-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell
+                >
+                            <Grid  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <Label FontFamily="" x:Name="ItemLabel" HorizontalTextAlignment="Center"   VerticalTextAlignment="Center" TextColor="Black" Text="{Binding Path=titulo}"></Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button
+            Grid.Row="2"
+            x:Name="IrA"
+            IsVisible="False"
+            Clicked="IrA_OnClicked"
+            Text="{Binding Path=Proposicion.titulo, StringFormat='Concepto: {0}', Mode=OneWay}"
+            ></Button>
+        </Grid>
+    </StackLayout>
+</ContentPage>

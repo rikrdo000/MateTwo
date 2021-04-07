@@ -7,6 +7,8 @@ namespace MateTwo
     class CadenasDeTexto
     {
 
+        
+
         public  static string definicion1_1 = "Definición 1.1.1";
         public  static string subelemento1_1 = "";
         public  static string imagen1_1 = "Definicion1_1.png";
@@ -190,5 +192,22 @@ namespace MateTwo
                                            "1: La integral inferior y la integral superior de una función definida y acotada sobre un rectángulo R siempre existen." +
                                            "La integral inferior siempre es menor o igual que la integral superior";
 
+    }
+
+
+    class TextoAcercaDe
+    {
+        public string Desarrollador { get; set; }
+        public string Disclaimer { get; set; }
+        public string  Quejas { get; set; }
+
+        public TextoAcercaDe()
+        {
+            Disclaimer =
+                "Está aplicación no busca sustituir un curso formal universitario, fue concebida como una guía para agilizar el proceso de aprendizaje, el material disponible no deberá tomarse como única fuente de consulta.";
+            Desarrollador = "Esta aplicación fue desarrollada por: \nRicardo de Jesús Veloz Cleto";
+            Quejas = "Para envíar quejas, comentarios y/o sugerencias por favor diríjase al correo:\njesus-ricardo12@hotmail.com";
+
+        }
     }
 }

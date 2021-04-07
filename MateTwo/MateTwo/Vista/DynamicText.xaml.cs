@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MateTwo.Annotations;
 using MateTwo.Modelo;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -66,12 +67,13 @@ namespace MateTwo
 
 
 
-		public DynamicText (object obj)
+		public DynamicText (Definicion obj)
 		{
             //over = "HOLA BEBECITO";
 
-            var o = (Definicion)obj;
+            //var o = (Definicion)obj;
 
+            var o = obj;
 
             Definicion = o.capitulo.ToString() +"."+ o.definicionId.ToString();
             Enunciado = o.enunciado;
@@ -84,6 +86,24 @@ namespace MateTwo
             
             InitializeComponent ();
 		}
+
+        public DynamicText(Proposicion obj)
+        {
+            var o = obj;
+
+            Definicion = o.capitulo.ToString() + "." + o.proposicionId.ToString();
+            Enunciado = o.enunciado;
+            Lectura = o.lectura;
+            Titulo = o.titulo;
+
+            if (o.imagenes.Length > 0)
+                Imagen = o.imagenes[0].source;
+
+                
+            Subelemento = o.subelemento;
+
+            InitializeComponent();
+        }
 
         private async void  Button_OnClicked(object sender, EventArgs e)
         {

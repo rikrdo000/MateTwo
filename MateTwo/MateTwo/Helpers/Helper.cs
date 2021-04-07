@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MateTwo.Modelo;
 using Newtonsoft.Json;
+using Xamarin.Forms;
 
 namespace MateTwo.Helpers
 {
@@ -61,7 +62,6 @@ namespace MateTwo.Helpers
             var result = JsonConvert.DeserializeObject<IEnumerable<Definicion>>(jsonResult);
 
             T2 = result;
-            //Titulos = titulosDynamic[0];
         }
 
 

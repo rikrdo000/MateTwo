@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MateTwo.MainPage"
              xmlns:local="clr-namespace:MateTwo;assembly=MateTwo"
-             Title="Cálculo Integral 2"
+             Appearing="MainPage_OnAppearing"
              >
 
     <ContentPage.Resources>
@@ -48,7 +48,7 @@
             <ListView Grid.Row="1" 
             ItemTapped="ListaDefiniciones_OnItemTapped"
             x:Name="ListaDefiniciones"
-            ItemsSource="{Binding Path=T2, Mode=TwoWay}"
+            ItemsSource="{Binding Path=Def, Mode=TwoWay}"
             SelectedItem="{Binding Path=DefinicionSeleccionada2, Mode=TwoWay}"
             
         >

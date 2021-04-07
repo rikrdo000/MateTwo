@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MateTwo;assembly=MateTwo"
+             xmlns:vista="clr-namespace:MateTwo.Vista"
+             x:Class="MateTwo.Shell.AppShell">
+
+    <Shell.FlyoutHeader>
+        <vista:HeaderContentView/>
+    </Shell.FlyoutHeader>
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="0.2*,0.8*">
+                <Image Source="{Binding FlyoutIcon}"
+                       Margin="5"
+                       HeightRequest="35" />
+                <Label Grid.Column="1"
+                       Text="{Binding Title}"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Start"
+                       VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <FlyoutItem  Title="MyTabApp"
+                Shell.TabBarIsVisible="False"
+                FlyoutDisplayOptions="AsMultipleItems">
+
+        <Tab Icon="proposiciones.png" Title="Proposiciones">
+            <ShellContent ContentTemplate="{DataTemplate vista:VistaProposiciones}"/>
+        </Tab>
+
+    </FlyoutItem>
+    <FlyoutItem  Title="MyTabApp"
+                Shell.TabBarIsVisible="False"
+                FlyoutDisplayOptions="AsMultipleItems">
+
+        <Tab Icon="definiciones.png" Title="Definiciones">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
+        </Tab>
+
+    </FlyoutItem>
+    <ShellContent IsTabStop="False" Title="Acerca de" Icon="acerca_de.png" ContentTemplate="{DataTemplate vista:Acerca_de}"/>
+</Shell>

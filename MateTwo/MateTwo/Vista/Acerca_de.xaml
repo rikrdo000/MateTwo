@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mateTwo="clr-namespace:MateTwo;assembly=MateTwo"
+             xmlns:vista="clr-namespace:MateTwo.Vista;assembly=MateTwo"
+             x:Class="MateTwo.Vista.Acerca_de" Appearing="Acerca_de_OnAppearing">
+
+        <ContentPage.Resources>
+            <ResourceDictionary>
+
+                <Color x:Key="MiColor">Blue</Color>
+                <mateTwo:TextoAcercaDe x:Key="Cadenas"></mateTwo:TextoAcercaDe>
+            </ResourceDictionary>
+        </ContentPage.Resources>
+
+        <StackLayout BindingContext="{Binding Source={StaticResource Cadenas}}"
+            Margin="20, 60 "
+            >
+
+            
+            <Label VerticalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" Text="{Binding Path=Disclaimer}"
+            />
+            <Label VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" Text="{Binding Path=Desarrollador}"
+            />
+            <Label VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" Text="{Binding Path=Quejas}"
+            />
+
+        </StackLayout>
+
+</ContentPage>

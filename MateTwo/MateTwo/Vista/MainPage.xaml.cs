@@ -6,44 +6,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MateTwo.Helpers;
+using MateTwo.Modelo;
+using MateTwo.Vista;
 using Xamarin.Forms;
 
 namespace MateTwo
 {
     public partial class MainPage : ContentPage
     {
+        private ContentPageBase contentpage = new ContentPageBase();
         public static ModelViewMate myMate = new ModelViewMate();
         
 
         public MainPage()
         {
             InitializeComponent();
-            //BindingContext = new ModelViewMate();
-        }
+            NavigationPage.SetHasNavigationBar(this, false);
+            NavigationPage.SetHasBackButton(this, false);
+            //NavigationPage.BarBackgroundColor = Color.Transparent;
 
-        private async void Button_OnClicked(object sender, EventArgs e)
-        {
-            //DynamicText dynamicView = new DynamicText("HOLA MI AMOR");
+            //var mdPage = Application.Current.MainPage as MasterDetailPage;
+            //var navPage = mdPage.Detail as NavigationPage;
+            //navPage.BarBackgroundColor = Color.Transparent;
 
-            //Navigation.PopAsync(dynamicView);
-
-            await Navigation.PushAsync(new DynamicText(myMate.hoja1));
-            //throw new NotImplementedException();
-        }
-
-        private async void Definicion1_2_OnClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new DynamicText(myMate.hoja2));
         }
 
         private async void IrA_OnClicked(object sender, EventArgs e)
         {
-            //var select_item = Resources["Modelo.DefinicionSeleccionada"] as Mates;
 
-            /*if (this.ListaDefiniciones.SelectedItem == null)
-            {
-                DisplayAlert("Seleccionar", "Por favor elija el concepto que desea desplegar", "Aceptar", null);
-            } */
             new Animation {
                     { 0, 0.5, new Animation (v => this.TranslationY = v, 0, -30) },
                     { 0.5, 1.0, new Animation (v => this.TranslationY = v, -30, 0, easing: Easing.CubicInOut) },
@@ -52,19 +42,8 @@ namespace MateTwo
                 }
                 .Commit(this, "AppleIconBounceChildAnimations", length: 1000, repeat: () => false);
 
-            //if ((double)this.GetValue(ScaleProperty) == 1)
-            //{
-            //    this.Animate(1.15, 2000, Easing.SpringOut);
-            //}
-
-            //else
-            //{
-            //    this.ScaleTo(1, 2000, Easing.SpringIn);
-            //}
-
             var selectedItem =  this.ListaDefiniciones.SelectedItem;
-            //Mates mat = ListaDefiniciones.SelectedItem();
-            await Navigation.PushAsync(new DynamicText(selectedItem));
+            await Navigation.PushAsync(new DynamicText((Definicion)selectedItem));
 
            
         }
@@ -76,6 +55,14 @@ namespace MateTwo
         {
             if ((bool)IrA.GetValue(IsVisibleProperty) == false)
             IrA.SetValue(IsVisibleProperty,true);
+        }
+
+        private void MainPage_OnAppearing(object sender, EventArgs e)
+        {
+            new Animation {
+                    { 0.0, 1.0, new Animation (h => this.TranslationX = h, 30, 0, easing: Easing.SpringOut) }
+                }
+                .Commit(this, "AppleIconBounceChildAnimations", length: 1000, repeat: () => false);
         }
     }
 
