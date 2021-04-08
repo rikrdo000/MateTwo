@@ -28,22 +28,44 @@
 
 
 
-            <StackLayout Orientation="Horizontal" >
+            <Grid VerticalOptions="FillAndExpand" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".5*"  ></ColumnDefinition>
+                <ColumnDefinition Width=".2*"></ColumnDefinition>
+                <ColumnDefinition Width=".1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
                 <Label
                     HorizontalOptions="Start"
-                    Margin="10, 0"
+                    Margin="10, 10"
                     Text="Elija un concepto:"
                     TextColor="DeepSkyBlue"
                     FontAttributes="Bold"
+                    VerticalOptions="Start"
+                    
                 ></Label>
-                <ImageButton 
-                    HorizontalOptions="EndAndExpand"
-                    VerticalOptions="End"
-                    WidthRequest="20"
-                    HeightRequest="20"
-                     Source="lupa.jpg"
-                    ></ImageButton>
-            </StackLayout>
+                <Label Grid.Column="1"
+                    HorizontalOptions="End"
+                    VerticalTextAlignment="Start"
+                    VerticalOptions="Start"
+                    Margin="0, 10"
+                    Text="Buscar:"
+                    TextColor="DeepSkyBlue"
+                    FontAttributes="Bold"
+                    Padding="0"
+                    
+                ></Label>
+                <ImageButton  
+                    BackgroundColor="Transparent"
+                    Grid.Column="2" 
+                              Margin="0, 0, 10, 0" Padding="0, 0, 0, 0"
+                              HorizontalOptions="FillAndExpand"
+                              VerticalOptions="FillAndExpand"
+                              WidthRequest="50"
+                              HeightRequest="50"
+                              Clicked="ImageButton_OnClicked"
+                              Source="icon_search.jpg"
+                ></ImageButton>
+            </Grid>
 
             <ListView Grid.Row="1" 
             ItemTapped="ListaDefiniciones_OnItemTapped"

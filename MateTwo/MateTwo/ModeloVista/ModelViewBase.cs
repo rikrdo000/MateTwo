@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Cache;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using MateTwo.Annotations;
@@ -36,11 +38,26 @@ namespace MateTwo.ModeloVista
             
         }
 
+
         public async Task GetData(string url)
         {
             HttpClient http = new HttpClient();
 
-            var response = await http.GetAsync(url);
+            //HttpRequestCachePolicy requestPolicy =
+            //    new HttpRequestCachePolicy(HttpCacheAgeControl.MaxAge,
+            //        TimeSpan.FromDays(1));
+
+            ////http
+            HttpResponseMessage response = new HttpResponseMessage();
+
+            response.Headers.CacheControl = new CacheControlHeaderValue()
+            {
+                Public = true,
+                MaxAge = new TimeSpan(1, 0, 0, 0)
+            };
+
+            response = await http.GetAsync(url);
+            
             response.EnsureSuccessStatusCode();
             var jsonResult = await response.Content.ReadAsStringAsync();
 

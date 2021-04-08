@@ -9,7 +9,7 @@
                    Source="neon.jpg"
                    Opacity="1" />
 <Label
-    Text="Cálculo Integral II" TextColor="GhostWhite" FontFamily="Cursiva" FontAttributes="Bold" FontSize="Medium"
+    Text="Cálculo Integral &#10;II" HorizontalTextAlignment="Center" TextColor="GhostWhite" FontFamily="Cursiva" FontAttributes="Bold" FontSize="Large"
     ></Label>
             <!--<StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" 
                           Grid.ColumnSpan="3">

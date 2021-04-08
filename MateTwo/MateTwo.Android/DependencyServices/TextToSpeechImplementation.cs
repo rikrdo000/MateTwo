@@ -33,6 +33,7 @@ namespace MateTwo.Droid.DependencyServices
             {
                 //speaker.SetLanguage(Locale.Default);
                 speaker = new TextToSpeech(context: Forms.Context, listener: this);
+                speaker.SetSpeechRate(0.8f);
             }
             else
             {

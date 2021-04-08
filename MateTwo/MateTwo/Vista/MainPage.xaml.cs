@@ -64,6 +64,11 @@ namespace MateTwo
                 }
                 .Commit(this, "AppleIconBounceChildAnimations", length: 1000, repeat: () => false);
         }
+
+        private async void ImageButton_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Search());
+        }
     }
 
 

@@ -1,16 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MateTwo.Search">
-    <ContentPage.Content>
-        <StackLayout>
+             xmlns:mateTwo="clr-namespace:MateTwo;assembly=MateTwo"
+             xmlns:modeloVista="clr-namespace:MateTwo.ModeloVista;assembly=MateTwo"
+             x:Class="MateTwo.Search" Appearing="Search_OnAppearing" >
 
-            <SearchBar
-                 CancelButtonColor="Coral"
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="MiColor">Blue</Color>
+            <modeloVista:ModelViewSearch x:Name="BindingMV" x:Key="Modelo"></modeloVista:ModelViewSearch>
+            <!--<Style TargetType="Button">
+                <Setter Property="FontSize" Value="Italic" />
+            </Style>-->
+            </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout BindingContext="{Binding Source={StaticResource Modelo}}">
+
+            <SearchBar 
+
+                x:Name="ActualSearch"
+                TextChanged="InputView_OnTextChanged" 
+                CancelButtonColor="DarkBlue"
                   Placeholder="Escriba el concepto a buscar"
-                  PlaceholderColor="DarkViolet"
+                  PlaceholderColor="CornflowerBlue"
                 ></SearchBar>
 
+            <ListView Grid.Row="1"  IsVisible="True"
+                      ItemTapped="ListaDefiniciones_OnItemTapped"
+                      x:Name="ListaBusqueda" RefreshControlColor="CornflowerBlue"
+                      ItemsSource="{Binding Path=Find, Mode=TwoWay}"
+                      SelectedItem="{Binding Path=Titulo_a_buscar, Mode=TwoWay}"
+            
+            >
+                <!--<ListView.Header   >
+            </ListView.Header>-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell
+                        >
+                            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <Label Opacity=".6"  x:Name="ItemLabel" HorizontalTextAlignment="Center" TextColor="CornflowerBlue"   VerticalTextAlignment="Center" Text="{Binding Path=titulo}"></Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button
+                Grid.Row="2"
+                x:Name="IrA"
+                IsVisible="False"
+                Clicked="IrA_OnClicked"
+                Text="{Binding Path=Titulo_a_buscar.titulo, StringFormat='Ir a: {0}', Mode=OneWay}"
+            ></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
