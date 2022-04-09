@@ -51,8 +51,8 @@ namespace MateTwo.ModeloVista
         public async void LoadTitulos()
         {
             Find = new List<Busqueda>();
-            await GetData("https://unamcalculoiv20210404224051.azurewebsites.net/api/Proposicion");
-            await GetData("https://unamcalculoiv20210404224051.azurewebsites.net/api/Definicion");
+            await GetData("https://calculoiv.azurewebsites.net/api/Proposicion");
+            await GetData("https://calculoiv.azurewebsites.net/api/Definicion");
             RellenaListaDeBusqueda();
         }
 

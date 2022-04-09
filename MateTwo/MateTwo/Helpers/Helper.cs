@@ -49,7 +49,7 @@ namespace MateTwo.Helpers
 
         public async void LoadTitulos()
         {
-            await GetData($"https://unamcalculoiv20210404224051.azurewebsites.net/api/Definicion");
+            await GetData($"https://calculoiv.azurewebsites.net/api/Definicion");
         }
 
         private async Task GetData(string url)

@@ -27,7 +27,7 @@ namespace MateTwo
 
         public async void LoadTitulos()
         {
-            await GetData("https://unamcalculoiv20210404224051.azurewebsites.net/api/Proposicion");
+            await GetData("https://calculoiv.azurewebsites.net/api/Proposicion");
         }
 
         public ModelViewProposicion()
